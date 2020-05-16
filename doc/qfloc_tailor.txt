@@ -1,0 +1,64 @@
+*qfloc_tailor.txt*     Automatically adjust quickfix and location window size.
+
+Version:  0.1
+Author:   Thore Weilbier <thore@weilbier.net>
+License:  MIT
+
+==============================================================================
+					      *qfloc_tailor_table_of_contents*
+TABLE OF CONTENTS~
+
+Introduction ..................................... |qfloc_tailor_introduction|
+Usage ................................................... |qfloc_tailor_usage|
+Variables ........................................... |qfloc_tailor_variables|
+
+
+==============================================================================
+                *qfloc_tailor_introduction*
+INTRODUCTION~
+
+This plugin automatically controls the size of the quickfix and location list
+window. Each time the list gets updated it resizes the window accordingly.
+It makes sure that it is never too big with many empty lines. On the other
+size it will increase the size only up to a maximum number of lines. Quickfix
+and location windows are handled individually.
+
+
+==============================================================================
+							  *qfloc_tailor_usage*
+USAGE~
+
+The plugin works out of the box. The only hint is that if the list length is
+smaller then the maximum number to display, it shrinks the window but
+maintains one empty line. This should visualize that the list is only that
+short. A complete full window does represent a potentially long list. So if
+there are just two entries and the maximum to display lines is 5, then the
+window will have the size of 3, resulting in an empty line at the bottom.
+Finally it moves the quickfix window always to a specific edge of the Vim
+window.
+
+
+==============================================================================
+						      *qfloc_tailor_variables*
+VARIABLES~
+
+|g:qfloc_tailor_max_height_location_window|		  number (default `5`)
+
+  The maximum to display entries in the location window.
+
+
+|g:qfloc_tailor_max_height_quickfix_window|		 number (default `10`)
+
+  The maximum to display entries in the quickfix window.
+
+
+|g:qfloc_tailor_quickfix_window_direction|		  string (default `J`)
+
+  Direction to which border of Vim quickfix window should be always moved.
+  This gets directly passed to |:wincmd|. The to use values are `H`, `J`, `K`
+  and `L`. The only recommended are `J` (bottom) and `K` (top).
+
+
+==============================================================================
+
+vim:tw=78:ts=8:noet:ft=help:norl:
